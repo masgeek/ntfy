@@ -1,0 +1,62 @@
+# ntfy server configuration file
+# Place this as server.yml in the same directory as docker-compose.yml
+
+# Base URL for the server (change to your domain)
+base-url: "http://localhost:8080"
+
+# Listen address
+listen-http: ":80"
+
+# Cache and database files
+cache-file: "/var/cache/ntfy/cache.db"
+auth-file: "/var/lib/ntfy/auth.db"
+attachment-cache-dir: "/var/cache/ntfy/attachments"
+
+# Attachment settings
+attachment-total-size-limit: "5G"
+attachment-file-size-limit: "15M"
+attachment-expiry-duration: "3h"
+
+# Authentication settings
+auth-default-access: "deny-all"  # Require authentication for all topics
+enable-signup: false             # Disable public signups
+enable-login: true              # Enable login page
+enable-reservations: true       # Allow topic reservations
+
+# Rate limiting (adjust as needed)
+visitor-subscription-limit: 30
+visitor-request-limit-burst: 60
+visitor-request-limit-replenish: "5s"
+visitor-email-limit-burst: 16
+visitor-email-limit-replenish: "1h"
+visitor-attachment-total-size-limit: "100M"
+visitor-attachment-daily-bandwidth-limit: "500M"
+
+# Email settings (optional - for email notifications)
+# smtp-sender-addr: "your-email@example.com"
+# smtp-sender-user: "your-email@example.com"
+# smtp-sender-pass: "your-app-password"
+# smtp-server-listen: ":25"
+# smtp-server-domain: "ntfy.example.com"
+# smtp-server-addr-prefix: "ntfy-"
+
+
+
+# Message settings
+message-size-limit: "4096"
+message-delay-limit: "12h"
+
+# Web settings
+web-root: "disable"  # Set to "app" to enable web UI, "disable" to disable
+# web-root: "app"    # Uncomment this line to enable the web interface
+
+# Logging
+log-level: "INFO"
+log-format: "text"
+
+# Metrics (optional)
+# enable-metrics: true
+# metrics-listen-http: ":9090"
+
+# Manager settings
+manager-interval: "1m"
